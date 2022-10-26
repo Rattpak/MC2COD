@@ -15,7 +15,7 @@ public class CSG {
 		//Texture caulk = new Texture();
 		String[] csgTexture = Texture.getEmptyBlock();
 		String csgType = "";
-		ArrayList<Brush> csgListX = new ArrayList<>(brushList);
+		ArrayList<Brush> csgList = new ArrayList<>(brushList);
 		boolean doMergeX = false;
 		//boolean doMergeZ = false;
 		
@@ -42,42 +42,38 @@ public class CSG {
 				}
 			}
 			if (doMergeX) {
-				System.out.println("\tCreating brush of size " + csgSizeX);
+				System.out.println("\tCreating brush of size " + csgSizeX + " on X axis");
 				if (csgSizeX > 1) {					
-					csgListX.add(new Brush((csgStartX+1), b.getY(), b.getZ(), ((csgStartX+1) + (csgSizeX-1)), b.getY(), b.getZ(), csgTexture, -1, 44, "CSG" + csgType + "X", (csgSizeX)));
-					System.out.println("Merging Brush on X Axis");
+					csgList.add(new Brush((csgStartX+1), b.getY(), b.getZ(), ((csgStartX+1) + (csgSizeX-1)), b.getY(), b.getZ(), csgTexture, -1, 44, "CSG" + csgType + "X", (csgSizeX)));
 				}
 				else {
-					csgListX.add(new Brush((csgStartX+1), b.getY(), b.getZ(), (b.getX() + csgSizeX), b.getY(), b.getZ(), csgTexture, -1, 44, "CSG" + csgType + "X", (csgSizeX)));
-					System.out.println("Merging Brush on X Axis");
+					System.out.println("CSGX Error?");
+					csgList.add(new Brush((csgStartX+1), b.getY(), b.getZ(), (b.getX() + csgSizeX), b.getY(), b.getZ(), csgTexture, -1, 44, "CSG" + csgType + "X", (csgSizeX)));
 				}	
 				doMergeX = false;
 			}					
+			
 		}
+		
 		
 		//==============================================================
 		//--------------------------------------------------------------
 		//--------------------- CSG MERGE Y AXIS -----------------------
 		//--------------------------------------------------------------
 		//==============================================================
-				
-		//Take from csgList (make it csgListX) and create a getter for Brush datatypes so we can compare start and end of brush.
-		//if start and end are the same (length), then run regular csg checks.
+		//Merge blocks that are still to be used in the brushList
 		
-		//TODO disable csg x for further testing on csg y
-		
-		/*boolean doMergeY = false;
-		ArrayList<Brush> csgListY = new ArrayList<>(csgListX);
-		for (Brush b : csgListX) {
+		boolean doMergeY = false;
+		//ArrayList<Brush> csgListY = new ArrayList<>(csgList);
+		for (Brush b : brushList) {
 			int csgSizeY = 1;
 			int csgStartY = b.getY();
 			csgTexture = b.getTexture();	
 			csgType = b.getType();
 			if (b.getGenerateBlock()) {
-				for (Brush b2 : csgListX) {
-					
-					//CSG on Y axis //also checks for csgX size equality
-					if (b2.getX() == b.getX() && b2.getY() == b.getY() && b2.getZ() == b.getZ() && Texture.checkTextureEquality(csgTexture, b2.getTexture()) && b.getType() == b2.getType() && b2.getGenerateBlock() && b.getCSGSizeX() == b2.getCSGSizeX()) {
+				for (Brush b2 : brushList) {
+					//CSG on Y axis
+					if (b2.getX() == b.getX() && b2.getY() == (b.getY() + csgSizeY) && b2.getZ() == b.getZ() && Texture.checkTextureEquality(csgTexture, b2.getTexture()) && b.getType() == b2.getType() && b2.getGenerateBlock()) {
 						b.setGenerateBlock(false);
 						b2.setGenerateBlock(false);								
 						doMergeY = true;
@@ -86,26 +82,23 @@ public class CSG {
 				}
 			}
 			if (doMergeY) {
-				System.out.println("\tCreating brush of size " + csgSizeY);
-				if (csgSizeY > 1) {					
-					csgListY.add(new Brush((b.getX()+1), b.getY(), b.getZ(), ((b.getX()+1) + (b.getCSGSizeX()-1)), (b.getY()+1 + b.getCSGSizeY()), b.getZ(), csgTexture, -1, 44, "CSG" + csgType + "Y", (csgSizeY)));
-					System.out.println("Merging Brush on Y Axis");
+				System.out.println("\tCreating brush of size " + csgSizeY + " on Y axis");
+				if (csgSizeY > 1) {
+					csgList.add(new Brush(b.getX(), (csgStartY), b.getZ(), b.getX(), ((csgStartY+1) + (csgSizeY-1)), b.getZ(), csgTexture, -999999, 44, "CSG" + csgType + "Y", (csgSizeY+1)));
 				}
 				else {
-					csgListY.add(new Brush((b.getX()+1), b.getY(), b.getZ(), ((b.getX()) + (b.getCSGSizeX()-1)), (b.getY() + b.getCSGSizeY()), b.getZ(), csgTexture, -1, 44, "CSG" + csgType + "Y", (csgSizeY)));
-					//csgListY.add(new Brush((csgStartX+1), b.getY(), b.getZ(), (b.getX() + csgSizeX), b.getY(), b.getZ(), csgTexture, -1, 44, "CSG" + csgType + "Y", (csgSizeX)));
-					System.out.println("Merging Brush on Y Axis");
+					System.out.println("CSGY Error?");
+					csgList.add(new Brush(b.getX(), (csgStartY+1), b.getZ(), b.getX(), (b.getY() + csgSizeY), b.getZ(), csgTexture, -1, 44, "CSG" + csgType + "Y", (csgSizeY)));
 				}	
 				doMergeY = false;
 			}					
-		}*/
-		
-		
-		
-		for (Brush c : csgListX) {
-			brushList.add(c);
 		}
 		
-		return csgListX;
+		
+		
+		
+		
+		
+		return csgList;
 	}
 }

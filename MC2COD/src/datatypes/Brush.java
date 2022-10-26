@@ -50,8 +50,9 @@ public class Brush {
 	 * @param brushNum
 	 * @param bs
 	 * @param type
+	 * @param size of the CSG on the axis determined by type
 	 */
-	public Brush(int x, int y, int z, int x2, int y2, int z2, String[] texture, int brushNum, int bs, String type, int csgSizeX) {
+	public Brush(int x, int y, int z, int x2, int y2, int z2, String[] texture, int brushNum, int bs, String type, int csgSize) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -62,35 +63,12 @@ public class Brush {
 		this.brushNum = brushNum;
 		this.bs = bs;
 		this.type = type;
-		this.csgSizeX = csgSizeX;
-	}
-	
-	/**
-	 * CSG XY Merge Only
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @param x2
-	 * @param y2
-	 * @param z2
-	 * @param texture
-	 * @param brushNum
-	 * @param bs
-	 * @param type
-	 */
-	public Brush(int x, int y, int z, int x2, int y2, int z2, String[] texture, int brushNum, int bs, String type, int csgSizeX, int csgSizeY) {
-		this.x = x;
-		this.y = y;
-		this.z = z;
-		this.x2 = x2;
-		this.y2 = y2;
-		this.z2 = z2;
-		this.texture = texture;
-		this.brushNum = brushNum;
-		this.bs = bs;
-		this.type = type;
-		this.csgSizeX = csgSizeX;
-		this.csgSizeY = csgSizeY;
+		if (this.type.equals("CSGfullX")) {
+			this.csgSizeX = csgSize;
+		}
+		if (this.type.equals("CSGfullY")) {
+			this.csgSizeY = csgSize;
+		}	
 	}
 	
 	public void setCSGSizeX(int size) {
@@ -243,18 +221,19 @@ public class Brush {
 		return genString;
 	}
 	
-	//Implement CSGX arithmetic into CSGY merge?
+	//Implement CSGX arithmetic into CSGY merge? No
+	//TODO fix this and find correct merge math
 	private String genCSGBlockBrushY()  {
 		
 		String append = " " + bs + " -" + bs + " 0 0 180 0 lightmap_gray 16384 16384 16 -32 0 0";
 		genString +="// brush " + this.brushNum + "\n";
 		genString += "{";
-		genString += "\n ( "+ bs*(x+1) +" "+ bs*(y+1) +" "+ ((bs*z)) +" ) ( "+ bs*x +" "+ bs*(y+1) +" "+ ((bs*z)) +" ) ( "+ bs*x +" "+ bs*(y-1) +" "+ ((bs*z)) +" ) " + this.texture[0] + append;						//line 1
-		genString += "\n ( "+ bs*x +" "+ (bs*(y-1)+4) +" "+ bs*(z+1) +" ) ( "+ bs*x +" "+ (bs*(y-1)+4) +" "+ bs*(z+1) +" ) ( "+ bs*(x+1) +" "+ (bs*(y-1)+4) +" "+ bs*(z+1) +" ) " + this.texture[1] + append;						//line 2
-		genString += "\n ( "+ bs*x +" "+ bs*(y-1) +" "+ bs*(z+1) +" ) ( "+ bs*(x+1) +" "+ bs*y +" "+ bs*(z+1) +" ) ( "+ bs*(x+1) +" "+bs*(y-1) +" "+ ((bs*(z+1))-8) +" ) " + this.texture[2] + append; 					//line 3
-		genString += "\n ( "+ bs*(x+(csgSizeX-1)) +" "+ bs*(y-1) +" "+ ((bs*z)+8) +" ) ( "+ bs*(x+(csgSizeX-1)) +" "+ bs*(y+1) +" "+ bs*(z+1) +" ) ( "+ bs*(x+(csgSizeX-1)) +" "+ bs*(y+1) +" "+ ((bs*z)) +" ) " + this.texture[3] + append; 				//line 4
-		genString += "\n ( "+ bs*(x+1) +" "+ bs*(x+(csgSizeY)) +" "+ bs*(z+1) +" ) ( "+ bs*x +" "+ bs*(x+(csgSizeY)) +" "+ bs*(z+1) +" ) ( "+ bs*x +" "+ bs*(x+(csgSizeY)) +" "+ ((bs*(z+1))-8) +" ) " + this.texture[4] +append; 			//line 5
-		genString += "\n ( "+ bs*(x-1) +" "+ bs*(y+1) +" "+ bs*(z+1) +" ) ( "+ bs*(x-1) +" "+ bs*(y-1) +" "+ bs*(z+1) +" ) ( "+ bs*(x-1) +" "+ bs*(y-1) +" "+ ((bs*(z+1))-8) +" ) " + this.texture[5] + append;	//line 6
+		genString += "\n ( "+ bs*(x+1) +" "+ (bs*(y+1)) +" "+ ((bs*z)) +" ) ( "+ bs*x +" "+ bs*(y+1) +" "+ ((bs*z)) +" ) ( "+ bs*x +" "+ bs*y +" "+ ((bs*z)) +" ) " + this.texture[0] + append;						//line 1
+		genString += "\n ( "+ bs*x +" "+ bs*y +" "+ bs*(z+1) +" ) ( "+ bs*x +" "+ bs*(y+1) +" "+ bs*(z+1) +" ) ( "+ bs*(x+1) +" "+ bs*(y+1) +" "+ bs*(z+1) +" ) " + this.texture[1] + append;						//line 2
+		genString += "\n ( "+ bs*x +" "+ bs*y +" "+ bs*(z+1) +" ) ( "+ bs*(x+1) +" "+ bs*y +" "+ bs*(z+1) +" ) ( "+ bs*(x+1) +" "+ bs*y +" "+ ((bs*(z+1))-8) +" ) " + this.texture[2] + append; 					//line 3
+		genString += "\n ( "+ bs*(x+1) +" "+ bs*y +" "+ ((bs*z)+8) +" ) ( "+ bs*(x+1) +" "+ bs*y +" "+ bs*(z+1) +" ) ( "+ bs*(x+1) +" "+ bs*(y+1) +" "+ ((bs*z)) +" ) " + this.texture[3] + append; 				//line 4
+		genString += "\n ( "+ bs*(x+1) +" "+ bs*(y+(csgSizeY-1)) +" "+ bs*(z+1) +" ) ( "+ bs*x +" "+ bs*(y+(csgSizeY-1)) +" "+ bs*(z+1) +" ) ( "+ bs*x +" "+ bs*(y+(csgSizeY-1)) +" "+ ((bs*(z+1))-8) +" ) " + this.texture[4] +append; 			//line 5
+		genString += "\n ( "+ bs*x +" "+ (bs*(y+1)-8) +" "+ bs*(z+1) +" ) ( "+ bs*x +" "+ ((bs*y)-16) +" "+ bs*(z+1) +" ) ( "+ bs*x +" "+ ((bs*y)-16) +" "+ ((bs*(z+1))-8) +" ) " + this.texture[5] + append;	//line 6
 		genString += "\n}\n";
 		return genString;
 	}
