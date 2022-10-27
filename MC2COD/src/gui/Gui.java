@@ -8,6 +8,7 @@ package gui;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
 
 import javax.swing.JFileChooser;
 
@@ -320,8 +321,18 @@ public class Gui extends javax.swing.JFrame {
     }                                                   
 
     private void buttonGenActionPerformed(java.awt.event.ActionEvent evt) { 
-    	buttonGen.setEnabled(false);
-    	if (!inputTextBox.getText().isBlank()) {
+    	buttonGen.setEnabled(false); 
+    	if (inputTextBox.getText().length() >= 4 && inputTextBox.getText().substring(inputTextBox.getText().length() -4, inputTextBox.getText().length()).equals(".bo2")) {
+    		if(!Path.of(inputTextBox.getText()).toFile().exists()) {
+    			System.out.println("File does not exist");
+    			buttonGen.setEnabled(true);
+    			return;
+    		}
+    		if(!Path.of(outputTextBox.getText()).toFile().exists() && !outputTextBox.getText().isBlank()) {
+    			System.out.println("Output dir does not exist");
+    			buttonGen.setEnabled(true);
+    			return;
+    		}
     		int game = -1;
     		System.out.println("FileUtilBo2 Settings: " + inputTextBox.getText() + ", " + checkboxGrassBlocks.isSelected());
     		FileUtilBo2 m = new FileUtilBo2(new File(inputTextBox.getText()), checkboxGrassBlocks.isSelected(), 44, checkboxCSG.isSelected());
@@ -338,7 +349,7 @@ public class Gui extends javax.swing.JFrame {
         	}
 
         	
-        	try {			
+        	try {			   		
         		File output;
         		if (outputTextBox.getText().isBlank()) {
         			File o = new File(inputTextBox.getText());

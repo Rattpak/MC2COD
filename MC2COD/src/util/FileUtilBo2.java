@@ -50,6 +50,8 @@ public class FileUtilBo2 {
 		Texture caulk = new Texture();
 		this.getTextFromFile();
 		this.text = this.removeHeader();
+		if (this.text.equals("invalid"))
+			return "Invalid .bo2 file";
 		
 		Scanner scanner = new Scanner(this.text);	
 		while (scanner.hasNextLine()) {
@@ -129,12 +131,12 @@ public class FileUtilBo2 {
 	 * @return		The trimmed and formatted .bo2 file text, containing only block info
 	 */
 	private String removeHeader() {
-		if (!this.text.isBlank()) {
+		if (!this.text.isBlank() && this.text.contains("[DATA]")) {
 			String tempText = this.text.substring(this.text.indexOf("[DATA]"), this.text.length());
 			tempText = tempText.replace("[DATA]", "");
 			return tempText.trim();
 		}
 		
-		return "FileUtilBo2 field text is empty or blank";
+		return "invalid";
 	}	
 }
