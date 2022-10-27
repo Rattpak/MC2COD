@@ -47,7 +47,7 @@ public class FileUtilBo2 {
 	public String convertToCod() { //TODO error & null checking
 		String returnString = "";
 		int brushnum = 0;
-		Texture caulk = new Texture();
+		//Texture caulk = new Texture();
 		this.getTextFromFile();
 		this.text = this.removeHeader();
 		if (this.text.equals("invalid"))
