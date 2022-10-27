@@ -319,8 +319,9 @@ public class Gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                                   
 
-    private void buttonGenActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        if (inputTextBox.getText().isBlank() == false) {
+    private void buttonGenActionPerformed(java.awt.event.ActionEvent evt) { 
+    	buttonGen.setEnabled(false);
+    	if (!inputTextBox.getText().isBlank()) {
     		int game = -1;
     		System.out.println("FileUtilBo2 Settings: " + inputTextBox.getText() + ", " + checkboxGrassBlocks.isSelected());
     		FileUtilBo2 m = new FileUtilBo2(new File(inputTextBox.getText()), checkboxGrassBlocks.isSelected(), 44, checkboxCSG.isSelected());
@@ -355,7 +356,8 @@ public class Gui extends javax.swing.JFrame {
     			System.out.println("An error occurred.");
     			e.printStackTrace();
     			}
-        	}                                   
+        	}    
+    	buttonGen.setEnabled(true);
     }                                         
 
     public void createFileChooser(javax.swing.JTextField field, String title, int selMode)

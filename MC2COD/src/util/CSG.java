@@ -84,7 +84,7 @@ public class CSG {
 			if (doMergeY) {
 				System.out.println("\tCreating brush of size " + csgSizeY + " on Y axis");
 				if (csgSizeY > 1) {
-					csgList.add(new Brush(b.getX(), (csgStartY), b.getZ(), b.getX(), ((csgStartY+1) + (csgSizeY-1)), b.getZ(), csgTexture, -999999, 44, "CSG" + csgType + "Y", (csgSizeY+1)));
+					csgList.add(new Brush(b.getX(), (csgStartY), b.getZ(), b.getX(), ((csgStartY+1) + (csgSizeY-1)), b.getZ(), csgTexture, -2, 44, "CSG" + csgType + "Y", (csgSizeY+1)));
 				}
 				else {
 					System.out.println("CSGY Error?");
