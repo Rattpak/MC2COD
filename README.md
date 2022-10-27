@@ -14,17 +14,20 @@ Use the Map Name input field to name the outputted .map file
 Choose the game to convert the map for 
 - World at War
 - Black Ops 3
+
 Choose brush generation options
 - Inlude Grass Blocks
   - Use this if your map is not heavy on grass blocks
 - Auto CSG Merge
   - Merges neighboring blocks, first on X-axis, then Y-axis. (Z-axis not yet implemented)
   - It is recomended to use this to significantly reduce brush count
+
 Map Options 
 - Add Start Zone
   - Adds all boilerplate features to make a zombies level function such as skyboxes, volume_sun, umbra_volume, volume_fpstool, and the info_volume(start zone)
 - Add Zombie Spawners
   - Adds 2 actor_spawner_zm_factory_zomb (zombie/dog), 2 riser locations (linked to start_zone), 2 dog spawners (linked to start_zone), 2 intermission points (end game camera), and all player spawns (solo and muliplayer)
+
 Generate Map
  - Generated the .map file using the given settings
 
