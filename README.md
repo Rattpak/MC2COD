@@ -24,9 +24,9 @@ Choose brush generation options
 
 Map Options 
 - Add Start Zone
-  - Adds all boilerplate features to make a zombies level function such as skyboxes, volume_sun, umbra_volume, volume_fpstool, and the info_volume(start zone)
+  - Adds all boilerplate features to make a zombies level function such as skyboxes, volume_sun, umbra_volume, volume_fpstool, and the info_volume(start zone) [World at War not yet supported]
 - Add Zombie Spawners
-  - Adds 2 actor_spawner_zm_factory_zomb (zombie/dog), 2 riser locations (linked to start_zone), 2 dog spawners (linked to start_zone), 2 intermission points (end game camera), and all player spawns (solo and muliplayer)
+  - Adds 2 actor_spawner_zm_factory_zomb (zombie/dog), 2 riser locations (linked to start_zone), 2 dog spawners (linked to start_zone), 2 intermission points (end game camera), and all player spawns (solo and muliplayer) [World at War not yet supported]
 
 Generate Map
  - Generated the .map file using the given settings
