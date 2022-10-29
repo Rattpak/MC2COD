@@ -17,6 +17,7 @@ public class FileUtilBo2 {
 	private ArrayList<Brush> bl = new ArrayList<Brush>();
 	private BlockUtil bu;
 	private boolean printCSGFailureInfo = false;
+	public final static String INVALID_FILE = "Invalid .bo2 file";
 	
 	/** Constructor for the FileUtilBo2 class
 	 * @param	File to be parsed and used for conversion
@@ -51,7 +52,7 @@ public class FileUtilBo2 {
 		this.getTextFromFile();
 		this.text = this.removeHeader();
 		if (this.text.equals("invalid"))
-			return "Invalid .bo2 file";
+			return INVALID_FILE;
 		
 		Scanner scanner = new Scanner(this.text);	
 		while (scanner.hasNextLine()) {
@@ -104,6 +105,9 @@ public class FileUtilBo2 {
 				returnString += bl.get(i).genBrush();
 				brushCount++;
 			}	
+		}
+		if (brushCount >= 32765) {
+			System.out.println("WARNING: Brushes Exceeds 32,765. This Map Will Not Work On COD5!");
 		}
 		return returnString;
 	}

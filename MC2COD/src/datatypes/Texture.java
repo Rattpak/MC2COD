@@ -1,51 +1,6 @@
 package datatypes;
 
 public class Texture {
-	private String bottom;
-	private String top;
-	private String back;
-	private String right;
-	private String front;
-	private String left;
-	
-	
-	/**
-	 * Single texture constructor
-	 */
-//	public Texture() {
-//		
-//	}
-//	
-//	public Texture(String texture) {
-//		this.bottom = texture;
-//		this.top = texture;
-//		this.back = texture;
-//		this.right = texture;
-//		this.front = texture;
-//		this.left = texture;
-//	}
-//	
-//	public Texture(String bottom, String top, String sides) {
-//		this.bottom = bottom;
-//		this.top = top;
-//		this.back = sides;
-//		this.right = sides;
-//		this.front = sides;
-//		this.left = sides;
-//	}
-//	
-//	/**
-//	 * 6 sided constructor
-//	 */
-//	public Texture(String bottom, String top, String back, String right, String front, String left) {
-//		this.bottom = bottom;
-//		this.top = top;
-//		this.back = back;
-//		this.right = right;
-//		this.front = front;
-//		this.left = left;
-//	}
-	
 	public static String[] texture(String texture) {
 		String[] arr = {texture, texture, texture, texture, texture, texture};
 		return arr;
@@ -58,17 +13,6 @@ public class Texture {
 	
 	public static String[] texture(String bottom, String top, String back, String right, String front, String left) {
 		String[] arr = {bottom, top, back, right, front, left};
-		return arr;
-	}
-	
-	
-	public String[] getTexture() {
-		String[] arr = {this.bottom, this.top, this.back, this.right, this.front, this.left};
-		return arr;
-	}
-	
-	public String[] getCaulkedBlock() {
-		String[] arr = {"caulk", "caulk", "caulk", "caulk", "caulk", "caulk"};
 		return arr;
 	}
 	
