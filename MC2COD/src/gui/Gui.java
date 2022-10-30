@@ -14,6 +14,14 @@ import javax.swing.JFileChooser;
 
 import util.FileUtilBo2;
 import util.MapGen;
+import javax.swing.JLabel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Component;
+import javax.swing.Box;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 /**
  *
@@ -21,6 +29,7 @@ import util.MapGen;
  */
 public class Gui extends javax.swing.JFrame {
 
+	public static boolean isWawCompatible = true;
     /**
      * Creates new form NewJFrame
      */
@@ -42,6 +51,7 @@ public class Gui extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        
     }
 
     /**
@@ -264,42 +274,51 @@ public class Gui extends javax.swing.JFrame {
                 buttonGenActionPerformed(evt);
             }
         });
+        
+        infoTextLabel = new JLabel("Info");
+        infoTextLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
+        infoTextLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(outputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 15, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addComponent(labelTitle))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
-                        .addComponent(buttonGen)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(inputPanel, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(outputPanel, GroupLayout.PREFERRED_SIZE, 585, GroupLayout.PREFERRED_SIZE))
+        			.addGap(0, 1, Short.MAX_VALUE))
+        		.addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(183)
+        			.addComponent(labelTitle)
+        			.addContainerGap(193, Short.MAX_VALUE))
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(240)
+        			.addComponent(buttonGen)
+        			.addContainerGap(249, Short.MAX_VALUE))
+        		.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(infoTextLabel, GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+        			.addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelTitle)
-                .addGap(18, 18, 18)
-                .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(outputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonGen)
-                .addContainerGap(112, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(labelTitle)
+        			.addGap(18)
+        			.addComponent(inputPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(outputPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addGap(18)
+        			.addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(buttonGen)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(infoTextLabel, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(49, Short.MAX_VALUE))
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>                        
@@ -325,14 +344,17 @@ public class Gui extends javax.swing.JFrame {
     	if (inputTextBox.getText().length() >= 4 && inputTextBox.getText().substring(inputTextBox.getText().length() -4, inputTextBox.getText().length()).equals(".bo2")) {
     		if(!Path.of(inputTextBox.getText()).toFile().exists()) {
     			System.out.println("File does not exist");
+    			infoTextLabel.setText("File does not exist");
     			buttonGen.setEnabled(true);
     			return;
     		}
     		if(!Path.of(outputTextBox.getText()).toFile().exists() && !outputTextBox.getText().isBlank()) {
     			System.out.println("Output dir does not exist");
+    			infoTextLabel.setText("Output dir does not exist");
     			buttonGen.setEnabled(true);
     			return;
     		}
+    		infoTextLabel.setText("Generating Map. Please Wait.");
     		int game = -1;
     		System.out.println("FileUtilBo2 Settings: " + inputTextBox.getText() + ", " + checkboxGrassBlocks.isSelected());
     		FileUtilBo2 m = new FileUtilBo2(new File(inputTextBox.getText()), checkboxGrassBlocks.isSelected(), 44, checkboxCSG.isSelected());
@@ -362,12 +384,23 @@ public class Gui extends javax.swing.JFrame {
     			FileWriter myWriter = new FileWriter(output);
     			myWriter.write(mg.generateMap());
     			myWriter.close();
-    			System.out.println("Successfully wrote to the file.");
+    			System.out.println("Successfully wrote to the file");
+    			if (isWawCompatible) {
+    				infoTextLabel.setText("Successfully wrote to the file");
+    			}
+    			else {
+    				infoTextLabel.setText("Successfully. Warning: Map Has Too Many Brushed for World at War!");
+    			}
     		} catch (IOException e) {
     			System.out.println("An error occurred.");
+    			infoTextLabel.setText("An error occurred");
     			e.printStackTrace();
     			}
-        	}    
+        	}   
+    	else
+    	{
+    		infoTextLabel.setText("Choose a valid .bo2 file for input");
+    	}
     	buttonGen.setEnabled(true);
     }                                         
 
@@ -411,5 +444,8 @@ public class Gui extends javax.swing.JFrame {
     private javax.swing.JRadioButton radButtonBO3;
     private javax.swing.JRadioButton radButtonWAW;
     private javax.swing.JTextField textboxMapName;
-    // End of variables declaration                   
+    private JLabel infoTextLabel;
+	public JLabel getInfoTextLabel() {
+		return infoTextLabel;
+	}
 }

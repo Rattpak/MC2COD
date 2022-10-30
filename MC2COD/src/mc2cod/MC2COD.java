@@ -8,5 +8,6 @@ public class MC2COD {
 		Gui gui = new Gui();
 		gui.setVisible(true);
 		gui.setLocationRelativeTo(null);
+		gui.getInfoTextLabel().setText("");
 	}
 }

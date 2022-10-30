@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import datatypes.Brush;
 import datatypes.Texture;
+import gui.Gui;
 
 public class FileUtilBo2 {
 	private File iFile;
@@ -108,6 +109,10 @@ public class FileUtilBo2 {
 		}
 		if (brushCount >= 32765) {
 			System.out.println("WARNING: Brushes Exceeds 32,765. This Map Will Not Work On COD5!");
+			Gui.isWawCompatible = false;
+		}
+		else {
+			Gui.isWawCompatible = true;
 		}
 		return returnString;
 	}
