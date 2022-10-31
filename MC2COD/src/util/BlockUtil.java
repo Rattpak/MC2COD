@@ -103,12 +103,6 @@ public class BlockUtil {
 		if (id.equals("2")) {	//grass block 
 			return Texture.texture("dirt", "grass_block_top", "grass_block_side");
 		}
-		if (id.equals("159.8")) { //light gray terracotta
-			return Texture.texture("light_gray_terracotta");
-		}
-		if (id.equals("159")) { 	//white terracotta
-			return Texture.texture("white_terracotta");
-		}
 		if (id.equals("18") || id.equals("18.4") ) {	//oak leaves
 			return Texture.texture("oak_leaves");
 		}
@@ -291,6 +285,104 @@ public class BlockUtil {
 		}
 		if (id.equals("35.15")) {
 			return Texture.texture("black_wool");
+		}
+		//Glazed Terracotta
+		if (id.equals("235")) {
+			return Texture.texture("white_glazed_terracotta");
+		}
+		if (id.equals("236")) {
+			return Texture.texture("orange_glazed_terracotta");
+		}
+		if (id.equals("237")) {
+			return Texture.texture("magenta_glazed_terracotta");
+		}
+		if (id.equals("238")) {
+			return Texture.texture("light_blue_glazed_terracotta");
+		}
+		if (id.equals("239")) {
+			return Texture.texture("yellow_glazed_terracotta");
+		}
+		if (id.equals("240")) {
+			return Texture.texture("lime_glazed_terracotta");
+		}
+		if (id.equals("241")) {
+			return Texture.texture("pink_glazed_terracotta");
+		}
+		if (id.equals("242")) {
+			return Texture.texture("gray_glazed_terracotta");
+		}
+		if (id.equals("243")) {
+			return Texture.texture("light_gray_glazed_terracotta");
+		}
+		if (id.equals("244")) {
+			return Texture.texture("cyan_glazed_terracotta");
+		}
+		if (id.equals("245")) {
+			return Texture.texture("purple_glazed_terracotta");
+		}
+		if (id.equals("246")) {
+			return Texture.texture("blue_glazed_terracotta");
+		}
+		if (id.equals("247")) {
+			return Texture.texture("brown_glazed_terracotta");
+		}
+		if (id.equals("248")) {
+			return Texture.texture("green_glazed_terracotta");
+		}
+		if (id.equals("249")) {
+			return Texture.texture("red_glazed_terracotta");
+		}
+		if (id.equals("250")) {
+			return Texture.texture("black_glazed_terracotta");
+		}
+		//terracotta
+		if (id.equals("159")) { 	
+			return Texture.texture("white_terracotta");
+		}
+		if (id.equals("159.1")) { 	
+			return Texture.texture("orange_terracotta");
+		}
+		if (id.equals("159.2")) { 	
+			return Texture.texture("magenta_terracotta");
+		}
+		if (id.equals("159.3")) { 	
+			return Texture.texture("light_blue_terracotta");
+		}
+		if (id.equals("159.4")) { 	
+			return Texture.texture("yellow_terracotta");
+		}
+		if (id.equals("159.5")) { 	
+			return Texture.texture("lime_terracotta");
+		}
+		if (id.equals("159.6")) { 	
+			return Texture.texture("pink_terracotta");
+		}
+		if (id.equals("159.7")) { 	
+			return Texture.texture("gray_terracotta");
+		}
+		if (id.equals("159.8")) { 
+			return Texture.texture("light_gray_terracotta");
+		}
+		if (id.equals("159.9")) { 
+			return Texture.texture("cyan_terracotta");
+		}
+		if (id.equals("159.10")) { 
+			return Texture.texture("purple_terracotta");
+		}
+		if (id.equals("159.11")) { 
+			return Texture.texture("blue_terracotta");
+		}
+		if (id.equals("159.12")) { 
+			return Texture.texture("brown_terracotta");
+		}
+		if (id.equals("159.13")) { 
+			return Texture.texture("green_terracotta");
+		}
+		if (id.equals("159.14")) { 
+			return Texture.texture("red_terracotta");
+		}
+		if (id.equals("159.15")) { 
+			return Texture.texture("black_terracotta");
 		}
 		
 		
