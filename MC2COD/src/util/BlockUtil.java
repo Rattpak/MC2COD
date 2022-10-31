@@ -385,6 +385,10 @@ public class BlockUtil {
 			return Texture.texture("black_terracotta");
 		}
 		
+		if (id.equals("58")) { 
+			return Texture.texture("oak_planks");//String bottom, String top, String back, String right, String front, String left
+		}
+		
 		
 		return Texture.texture("caulk"); //default
 	}
