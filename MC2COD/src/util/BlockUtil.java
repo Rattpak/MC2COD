@@ -8,7 +8,7 @@ public class BlockUtil {
 	public BlockUtil(boolean includeGrassBlock) {
 		this.includeGrassBlock = includeGrassBlock;
 		
-		System.out.println("TextureUtil Created");
+		System.out.println("BlockUtil Created");
 	}
 	
 	// bottom, top, back, right, front, left
@@ -354,6 +354,9 @@ public class BlockUtil {
 		if (id.equals("159.5")) { 	
 			return Texture.texture("lime_terracotta");
 		}
+		if (id.equals("138")) {
+			return Texture.texture("blue_glazed_terracotta"); //BEACON TEMP TEXTURE
+		}
 		if (id.equals("159.6")) { 	
 			return Texture.texture("pink_terracotta");
 		}
@@ -384,6 +387,15 @@ public class BlockUtil {
 		if (id.equals("159.15")) { 
 			return Texture.texture("black_terracotta");
 		}
+		if (id.equals("80")) {
+			return Texture.texture("snow");
+		}
+		if (id.equals("162") ) { //dark oak log wood
+			return Texture.texture("dark_oak_log");
+		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("162") ) {	//rest of dark oak log wood
+			return Texture.texture("dark_oak_log");
+		}
 		
 		if (id.equals("58")) { 
 			return Texture.texture("oak_planks");//String bottom, String top, String back, String right, String front, String left
@@ -395,6 +407,15 @@ public class BlockUtil {
 	
 	
 	public boolean getBlockPlaceable(String id) {
+		if (id.equals("156")) { //quartz stair 
+			return false;
+		}
+		if (id.equals("131")) { //tripwire hook
+			return false;
+		}
+		if (id.equals("132")) { //tripwire
+			return false;
+		}
 		if (id.equals("31.1")) {	//grass (not the block)
 			return false;
 		}
@@ -451,6 +472,18 @@ public class BlockUtil {
 		}
 		if (id.equals("186")) {		//dark oak gate
 			return false;		
+		}
+		if (id.equals("65")) { //ladder
+			return false;
+		}
+		if (id.equals("78")) {
+			return false;
+		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("78")) { //snow layer //any decimal variations of 78
+			return false;
+		}
+		if (id.equals("30")) { //cobweb
+			return false;
 		}
 		if (!this.includeGrassBlock) {
 			if (id.equals("2")) {
