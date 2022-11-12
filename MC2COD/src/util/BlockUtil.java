@@ -431,6 +431,9 @@ public class BlockUtil {
 		if (id.equals("37")) {		//Dandelion
 			return false;
 		}
+		if (id.equals("93") || id.equals("94") || id.equals("149") || id.equals("150")) {		//redstone repeater and comparator
+			return false;
+		}
 		if (id.equals("194")) {	//Birch Door Block
 			return false;
 		}
