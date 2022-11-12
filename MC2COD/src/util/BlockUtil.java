@@ -485,6 +485,12 @@ public class BlockUtil {
 		if (id.equals("30")) { //cobweb
 			return false;
 		}
+		if (id.equals("6") || id.equals("6.1") || id.equals("6.2") || id.equals("6.3") || id.equals("6.4") || id.equals("6.5")) { //sapplings
+			return false;
+		}
+		if (id.equals("31") || id.equals("31.1") || id.equals("31.2") || id.equals("32")) { //deadbushes and ferns
+			return false;
+		}
 		if (!this.includeGrassBlock) {
 			if (id.equals("2")) {
 				return false;
