@@ -19,6 +19,9 @@ public class BlockUtil {
 		if (id.equals("1")) {
 			return Texture.texture("stone");
 		}
+		if (id.equals("12")) {//sand
+			return Texture.texture("sand");
+		}
 		if (id.equals("18.2")) {
 			return Texture.texture("birch_leaves");
 		}
@@ -67,7 +70,7 @@ public class BlockUtil {
 		if (id.equals("5.1") || id.equals("125.1") || id.equals("126.1") || id.equals("134") || id.equals("126.9") || id.equals("188")) { //spruce plank texture
 			return Texture.texture("spruce_planks");
 		}
-		if (id.equals("126.10") || id.equals("126.2") || id.equals("189")) {
+		if (id.equals("126.10") || id.equals("126.2") || id.equals("189") || id.equals("5.2")) {
 			return Texture.texture("birch_planks");
 		}
 		if (id.equals("123")) { 	//redstone lamp off
@@ -91,7 +94,7 @@ public class BlockUtil {
 		if (id.equals("126.11") || id.equals("126.3") || id.equals("190")) {
 			return Texture.texture("jungle_planks");
 		}
-		if (id.equals("126.12") || id.equals("126.4") || id.equals("192")) {
+		if (id.equals("126.12") || id.equals("126.4") || id.equals("192") || id.equals("5.4")) {
 			return Texture.texture("acacia_planks");
 		}
 		if (id.equals("251.3")) {	//light blue concrete
@@ -390,13 +393,15 @@ public class BlockUtil {
 		if (id.equals("80")) {
 			return Texture.texture("snow");
 		}
-		if (id.equals("162") ) { //dark oak log wood
+		if (id.equals("162") ) { //acacia log wood
+			return Texture.texture("acacia_log");
+		}
+		if (id.equals("162.1") ) { //dark oak log wood
 			return Texture.texture("dark_oak_log");
 		}
-		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("162") ) {	//rest of dark oak log wood
+		if (id.contains(".") && id.substring(0, id.length() - 1).equals("162.1") ) {	//rest of dark oak log wood
 			return Texture.texture("dark_oak_log");
 		}
-		
 		if (id.equals("58")) { 
 			return Texture.texture("oak_planks");//String bottom, String top, String back, String right, String front, String left
 		}
@@ -470,6 +475,9 @@ public class BlockUtil {
 		if (id.equals("183")) { //spruce gate
 			return false;
 		}
+		if (id.equals("83")) { //sugar canes
+			return false;
+		}
 		if (id.equals("186")) {		//dark oak gate
 			return false;		
 		}
@@ -483,6 +491,12 @@ public class BlockUtil {
 			return false;
 		}
 		if (id.equals("30")) { //cobweb
+			return false;
+		}
+		if (id.equals("8") || id.equals("9")) { //water & flowing water
+			return false;
+		}
+		if (id.equals("10") || id.equals("11")) { //lava & flowing lava
 			return false;
 		}
 		if (!this.includeGrassBlock) {
