@@ -30,6 +30,9 @@ public class CSG {
 			csgStartX = b.getX();
 			csgTexture = b.getTexture();	
 			csgType = b.getType();
+			if (!b.getType().equals("full")) {
+				continue;
+			}
 			if (b.getGenerateBlock()) {
 				for (Brush b2 : brushList) {
 					//CSG on X axis
@@ -70,6 +73,9 @@ public class CSG {
 			int csgStartY = b.getY();
 			csgTexture = b.getTexture();	
 			csgType = b.getType();
+			if (!b.getType().equals("full")) {
+				continue;
+			}
 			if (b.getGenerateBlock()) {
 				for (Brush b2 : brushList) {
 					//CSG on Y axis

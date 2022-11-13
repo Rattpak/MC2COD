@@ -46,6 +46,9 @@ public class BlockUtil {
 		if (id.equals("17.1")) {	//spruce logs
 			return Texture.texture("spruce_log_top", "spruce_log_top", "spruce_log");
 		}
+		if (id.equals("79")) {
+			return Texture.texture("ice");
+		}
 		if (id.equals("17")) {
 			return Texture.texture("oak_log_top", "oak_log_top", "oak_log");
 		}
@@ -357,9 +360,9 @@ public class BlockUtil {
 		if (id.equals("159.5")) { 	
 			return Texture.texture("lime_terracotta");
 		}
-		if (id.equals("138")) {
-			return Texture.texture("blue_glazed_terracotta"); //BEACON TEMP TEXTURE
-		}
+		//if (id.equals("138")) {
+		//	return Texture.texture("blue_glazed_terracotta"); //BEACON TEMP TEXTURE
+		//}
 		if (id.equals("159.6")) { 	
 			return Texture.texture("pink_terracotta");
 		}
@@ -457,6 +460,9 @@ public class BlockUtil {
 		if (id.equals("107")) {	//oak fence gate
 			return false;
 		}
+		if (id.equals("138")) {
+			return false;
+		}
 		if (id.equals("77") || id.equals("77.1") || id.equals("77.4") || id.equals("77.2") || id.equals("77.3") || id.equals("77.5")) {		//stone button
 			return false;
 		}
@@ -487,6 +493,10 @@ public class BlockUtil {
 		if (id.equals("65")) { //ladder
 			return false;
 		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("65")) { //any decimal variations of 65 
+			return false;
+		}
+			
 		if (id.equals("78")) {
 			return false;
 		}
@@ -496,17 +506,19 @@ public class BlockUtil {
 		if (id.equals("30")) { //cobweb
 			return false;
 		}
-<<<<<<< HEAD
+
 		if (id.equals("8") || id.equals("9")) { //water & flowing water
 			return false;
 		}
 		if (id.equals("10") || id.equals("11")) { //lava & flowing lava
-=======
+			return false;
+		}
+
 		if (id.equals("6") || id.equals("6.1") || id.equals("6.2") || id.equals("6.3") || id.equals("6.4") || id.equals("6.5")) { //sapplings
 			return false;
 		}
 		if (id.equals("31") || id.equals("31.1") || id.equals("31.2") || id.equals("32")) { //deadbushes and ferns
->>>>>>> 3ac31f78f46c010b21d0b65c07bc249e8d2383d8
+
 			return false;
 		}
 		if (!this.includeGrassBlock) {
