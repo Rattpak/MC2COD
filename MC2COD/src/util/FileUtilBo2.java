@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import datatypes.Brush;
 import datatypes.Texture;
+import gui.Gui;
 
 public class FileUtilBo2 {
 	private File iFile;
@@ -17,6 +18,7 @@ public class FileUtilBo2 {
 	private ArrayList<Brush> bl = new ArrayList<Brush>();
 	private BlockUtil bu;
 	private boolean printCSGFailureInfo = false;
+	public final static String INVALID_FILE = "Invalid .bo2 file";
 	
 	/** Constructor for the FileUtilBo2 class
 	 * @param	File to be parsed and used for conversion
@@ -47,9 +49,11 @@ public class FileUtilBo2 {
 	public String convertToCod() { //TODO error & null checking
 		String returnString = "";
 		int brushnum = 0;
-		Texture caulk = new Texture();
+		//Texture caulk = new Texture();
 		this.getTextFromFile();
 		this.text = this.removeHeader();
+		if (this.text.equals("invalid"))
+			return INVALID_FILE;
 		
 		Scanner scanner = new Scanner(this.text);	
 		while (scanner.hasNextLine()) {
@@ -103,6 +107,13 @@ public class FileUtilBo2 {
 				brushCount++;
 			}	
 		}
+		if (brushCount >= 32765) {
+			System.out.println("WARNING: Brushes Exceeds 32,765. This Map Will Not Work On COD5!");
+			Gui.isWawCompatible = false;
+		}
+		else {
+			Gui.isWawCompatible = true;
+		}
 		return returnString;
 	}
 	
@@ -129,12 +140,12 @@ public class FileUtilBo2 {
 	 * @return		The trimmed and formatted .bo2 file text, containing only block info
 	 */
 	private String removeHeader() {
-		if (!this.text.isBlank()) {
+		if (!this.text.isBlank() && this.text.contains("[DATA]")) {
 			String tempText = this.text.substring(this.text.indexOf("[DATA]"), this.text.length());
 			tempText = tempText.replace("[DATA]", "");
 			return tempText.trim();
 		}
 		
-		return "FileUtilBo2 field text is empty or blank";
+		return "invalid";
 	}	
 }

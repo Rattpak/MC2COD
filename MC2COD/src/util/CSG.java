@@ -30,6 +30,9 @@ public class CSG {
 			csgStartX = b.getX();
 			csgTexture = b.getTexture();	
 			csgType = b.getType();
+			if (!b.getType().equals("full")) {
+				continue;
+			}
 			if (b.getGenerateBlock()) {
 				for (Brush b2 : brushList) {
 					//CSG on X axis
@@ -70,6 +73,9 @@ public class CSG {
 			int csgStartY = b.getY();
 			csgTexture = b.getTexture();	
 			csgType = b.getType();
+			if (!b.getType().equals("full")) {
+				continue;
+			}
 			if (b.getGenerateBlock()) {
 				for (Brush b2 : brushList) {
 					//CSG on Y axis
@@ -84,7 +90,7 @@ public class CSG {
 			if (doMergeY) {
 				System.out.println("\tCreating brush of size " + csgSizeY + " on Y axis");
 				if (csgSizeY > 1) {
-					csgList.add(new Brush(b.getX(), (csgStartY), b.getZ(), b.getX(), ((csgStartY+1) + (csgSizeY-1)), b.getZ(), csgTexture, -999999, 44, "CSG" + csgType + "Y", (csgSizeY+1)));
+					csgList.add(new Brush(b.getX(), (csgStartY), b.getZ(), b.getX(), ((csgStartY+1) + (csgSizeY-1)), b.getZ(), csgTexture, -2, 44, "CSG" + csgType + "Y", (csgSizeY+1)));
 				}
 				else {
 					System.out.println("CSGY Error?");

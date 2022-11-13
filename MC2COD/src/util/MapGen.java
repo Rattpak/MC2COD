@@ -28,6 +28,8 @@ public class MapGen {
 	}
 	
 	public String generateMap() {
+		if (this.brushes.equals(FileUtilBo2.INVALID_FILE))
+			return FileUtilBo2.INVALID_FILE;
 		if (this.game == 1) {//bo3
 			String gen = getBo3Header();	//uses worldspawn classname
 			if (this.addStartZone) {
