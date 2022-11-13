@@ -436,6 +436,9 @@ public class BlockUtil {
 		if (id.equals("37")) {		//Dandelion
 			return false;
 		}
+		if (id.equals("93") || id.equals("94") || id.equals("149") || id.equals("150")) {		//redstone repeater and comparator
+			return false;
+		}
 		if (id.equals("194")) {	//Birch Door Block
 			return false;
 		}
@@ -493,10 +496,17 @@ public class BlockUtil {
 		if (id.equals("30")) { //cobweb
 			return false;
 		}
+<<<<<<< HEAD
 		if (id.equals("8") || id.equals("9")) { //water & flowing water
 			return false;
 		}
 		if (id.equals("10") || id.equals("11")) { //lava & flowing lava
+=======
+		if (id.equals("6") || id.equals("6.1") || id.equals("6.2") || id.equals("6.3") || id.equals("6.4") || id.equals("6.5")) { //sapplings
+			return false;
+		}
+		if (id.equals("31") || id.equals("31.1") || id.equals("31.2") || id.equals("32")) { //deadbushes and ferns
+>>>>>>> 3ac31f78f46c010b21d0b65c07bc249e8d2383d8
 			return false;
 		}
 		if (!this.includeGrassBlock) {
