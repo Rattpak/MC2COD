@@ -185,6 +185,12 @@ public class Brush {
 		if (this.type.equals("CSGfullY")) {
 			return genCSGBlockBrushY();
 		}
+		if (this.type.equals("stair0")) {
+			return genStair0();
+		}
+		if (this.type.equals("stair1")) {
+			return genStair1();
+		}
 
 		return "";
 	}
@@ -340,11 +346,44 @@ public class Brush {
 		genString += "\n ( "+ (bs*x) +" "+ (bs*(y)+8) +" "+ ((bs*z)+8) +" ) ( "+ (bs*x) +" "+ bs*y +" "+ ((bs*z)+8) +" ) ( "+ (bs*x) +" "+ bs*y +" "+ ((bs*z)) +" ) " + this.texture[5] + append;	//line 6
 		genString += "\n}\n";
 		
+		//this is the top of the stair
+		genString +="// brush " + this.brushNum + "\n";
+		genString += "{";
+		genString += "\n ( "+ bs*x +" "+ bs*y +" "+ bs*(z+1) +" ) ( "+ bs*x +" "+ bs*(y+1) +" "+ bs*(z+1) +" ) ( "+ bs*(x+1) +" "+ bs*(y+1) +" "+ bs*(z+1) +" ) " + this.texture[0] + append;						//line 1
+		genString += "\n ( "+ bs*x +" "+ bs*y +" "+ ((bs*z)+4) +" ) ( "+ bs*(x+1) +" "+ bs*y +" "+ ((bs*z)+4) +" ) ( "+ bs*(x+1) +" "+ bs*y +" "+ bs*z +" ) " + this.texture[1] + append;						//line 2
+		genString += "\n ( "+ bs*(x+1) +" "+ bs*y +" "+ ((bs*z)+4) +" ) ( "+ bs*(x+1) +" "+ bs*(y+1) +" "+ ((bs*z)+4) +" ) ( "+ bs*(x+1) +" "+ bs*(y+1) +" "+ bs*z +" ) " + this.texture[2] + append; 					//line 3
+		genString += "\n ( "+ bs*(x+1) +" "+ bs*(y+1) +" "+ ((bs*z)+4) +" ) ( "+ (bs*x) +" "+ bs*(y+1) +" "+ ((bs*z)+4) +" ) ( "+ (bs*x) +" "+ bs*(y+1) +" "+ bs*z +" ) " + this.texture[3] + append; 				//line 4
+		genString += "\n ( "+ ((bs*x)+ss) +" "+ bs*(y+1) +" "+ ((bs*z)+2) +" ) ( "+ ((bs*x)+ss) +" "+ bs*y +" "+ ((bs*z)+2) +" ) ( "+ ((bs*x)+ss) +" "+ bs*y +" "+ ((bs*z)-2) +" ) " + this.texture[4] + append; 			//line 5
+		genString += "\n ( "+ ((bs*x)+2) +" "+ bs*(y+1) +" "+ ((bs*z)+22) +" ) ( "+ ((bs*x)+10) +" "+ bs*(y+1) +" "+ ((bs*z)+22) +" ) ( "+ ((bs*x)+2) +" "+ (bs*(y+1)+32) +" "+ ((bs*z)+22) +" ) " + this.texture[5] + append;	//line 6
+		genString += "\n}\n";
 		
+		return genString;
+	}
+	
+	private String genStair1() {
+		//-------------The bottom slab--------------
+		int ss = (int)bs/2; //slab size
+		String append = " " + bs + " -" + bs + " 0 0 180 0 lightmap_gray 16384 16384 16 -32 0 0";
+		genString +="// brush " + this.brushNum + "\n";
+		genString += "{";
+		genString += "\n ( "+ (bs*(x)+8) +" "+ (bs*(y)+8) +" "+ ((bs*z)) +" ) ( "+ (bs*x) +" "+ (bs*(y)+8) +" "+ ((bs*z)) +" ) ( "+ (bs*x) +" "+ bs*y +" "+ ((bs*z)) +" ) " + this.texture[0] + append;						//line 1
+		genString += "\n ( "+ (bs*(x)+2) +" "+ bs*y +" "+ ((bs*(z))+ss) +" ) ( "+ (bs*(x)+2) +" "+ (bs*(y)+8) +" "+ ((bs*(z))+ss) +" ) ( "+ ((bs*(x))+10) +" "+ (bs*(y)+8) +" "+ ((bs*(z))+ss) +" ) " + this.texture[1] + append;						//line 2
+		genString += "\n ( "+ (bs*x) +" "+ bs*y +" "+ ((bs*z)+8) +" ) ( "+ bs*(x+1) +" "+ bs*y +" "+ ((bs*z)+8) +" ) ( "+ bs*(x+1) +" "+ bs*y +" "+ ((bs*z)) +" ) " + this.texture[2] + append; 					//line 3
+		genString += "\n ( "+ bs*(x+1) +" "+ bs*y +" "+ ((bs*z)+8) +" ) ( "+ bs*(x+1) +" "+ (bs*(y)+8) +" "+ ((bs*z)+8) +" ) ( "+ bs*(x+1) +" "+ (bs*(y)+8) +" "+ ((bs*z)) +" ) " + this.texture[3] + append; 				//line 4
+		genString += "\n ( "+ (bs*(x)+8) +" "+ bs*(y+1) +" "+ ((bs*z)+8) +" ) ( "+ (bs*x) +" "+ bs*(y+1) +" "+ ((bs*z)+8) +" ) ( "+ (bs*x) +" "+ bs*(y+1) +" "+ ((bs*z)) +" ) " + this.texture[4] + append; 			//line 5
+		genString += "\n ( "+ (bs*x) +" "+ (bs*(y)+8) +" "+ ((bs*z)+8) +" ) ( "+ (bs*x) +" "+ bs*y +" "+ ((bs*z)+8) +" ) ( "+ (bs*x) +" "+ bs*y +" "+ ((bs*z)) +" ) " + this.texture[5] + append;	//line 6
+		genString += "\n}\n";
 		
-		
-		
-		
+		//this is the top of the stair
+		genString +="// brush " + this.brushNum + "\n";
+		genString += "{";
+		genString += "\n ( "+ bs*x +" "+ bs*y +" "+ bs*(z+1) +" ) ( "+ (bs*x) +" "+ bs*(y+1) +" "+ bs*(z+1) +" ) ( "+ bs*(x+1) +" "+ bs*(y+1) +" "+ bs*(z+1) +" ) " + this.texture[0] + append;						//line 1
+		genString += "\n ( "+ bs*x +" "+ bs*y +" "+ ((bs*z)+4) +" ) ( "+ bs*(x+1) +" "+ bs*y +" "+ ((bs*z)+4) +" ) ( "+ bs*(x+1) +" "+ bs*y +" "+ bs*z +" ) " + this.texture[1] + append;						//line 2
+		genString += "\n ( "+ ((bs*x)+ss) +" "+ bs*y +" "+ ((bs*z)+4) +" ) ( "+ ((bs*x)+ss) +" "+ bs*(y+1) +" "+ ((bs*z)+4) +" ) ( "+ ((bs*x)+ss) +" "+ bs*(y+1) +" "+ bs*z +" ) " + this.texture[2] + append; 					//line 3
+		genString += "\n ( "+ bs*(x+1) +" "+ bs*(y+1) +" "+ ((bs*z)+4) +" ) ( "+ (bs*x) +" "+ bs*(y+1) +" "+ ((bs*z)+4) +" ) ( "+ (bs*x) +" "+ bs*(y+1) +" "+ bs*z +" ) " + this.texture[3] + append; 				//line 4
+		genString += "\n ( "+ bs*x +" "+ bs*(y+1) +" "+ ((bs*z)+4) +" ) ( "+ (bs*x) +" "+ bs*y +" "+ ((bs*z)+4) +" ) ( "+ (bs*x) +" "+ bs*y +" "+ bs*z +" ) " + this.texture[4] + append; 			//line 5
+		genString += "\n ( "+ ((bs*x)+2) +" "+ bs*(y+1) +" "+ ((bs*z)+22) +" ) ( "+ ((bs*x)+10) +" "+ bs*(y+1) +" "+ ((bs*z)+22) +" ) ( "+ ((bs*x)+2) +" "+ (bs*(y+1)+32) +" "+ ((bs*z)+22) +" ) " + this.texture[5] + append;	//line 6
+		genString += "\n}\n";
 		
 		return genString;
 	}

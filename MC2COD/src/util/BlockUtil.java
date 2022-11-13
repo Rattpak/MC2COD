@@ -37,10 +37,10 @@ public class BlockUtil {
 		if (id.equals("5.5") || id.equals("125.5") || id.equals("126.5") || id.equals("164") || id.equals("126.13") || id.equals("191")) {
 			return Texture.texture("dark_oak_planks");
 		}
-		if (id.equals("44.6") || id.equals("44.14") || id.equals("43.6") || id.equals("112") || id.equals("113")) {
+		if (id.equals("44.6") || id.equals("44.14") || id.equals("43.6") || id.equals("112") || id.equals("113") || id.contains("114")) {
 			return Texture.texture("nether_bricks");
 		}
-		if (id.equals("44.15") || id.equals("44.7") || id.equals("43.7") || id.equals("155")) {
+		if (id.equals("44.15") || id.equals("44.7") || id.equals("43.7") || id.equals("155") || id.contains("156")) {
 			return Texture.texture("quartz_block_side");
 		}
 		if (id.equals("17.1")) {	//spruce logs
@@ -64,16 +64,16 @@ public class BlockUtil {
 		if (id.equals("162.1")) {
 			return Texture.texture("dark_oak_log_top", "dark_oak_log_top", "dark_oak_log");
 		}
-		if (id.equals("44.12") || id.equals("44.4") || id.equals("45") || id.equals("43.4")) {
+		if (id.equals("44.12") || id.equals("44.4") || id.equals("45") || id.equals("43.4") || id.contains("108")) {
 			return Texture.texture("bricks");
 		}
 		if (id.equals("18.1") || id.equals("18.5")) { 	//spruce leaves
 			return Texture.texture("spruce_leaves");
 		}
-		if (id.equals("5.1") || id.equals("125.1") || id.equals("126.1") || id.equals("134") || id.equals("126.9") || id.equals("188")) { //spruce plank texture
+		if (id.equals("5.1") || id.equals("125.1") || id.equals("126.1") || id.equals("134") || id.equals("126.9") || id.equals("188") || id.contains("134")) { //spruce plank texture
 			return Texture.texture("spruce_planks");
 		}
-		if (id.equals("126.10") || id.equals("126.2") || id.equals("189") || id.equals("5.2")) {
+		if (id.equals("126.10") || id.equals("126.2") || id.equals("189") || id.equals("5.2") || id.contains("135")) {
 			return Texture.texture("birch_planks");
 		}
 		if (id.equals("123")) { 	//redstone lamp off
@@ -85,19 +85,19 @@ public class BlockUtil {
 		if (id.equals("251")) { 	//white concrete
 			return Texture.texture("white_concrete");
 		}
-		if (id.equals("4") || id.equals("44.3") || id.equals("44.11") || id.equals("43.3") || id.equals("139")) {	//cobblestone texture
+		if (id.equals("4") || id.equals("44.3") || id.equals("44.11") || id.equals("43.3") || id.equals("139") || id.contains("67")) {	//cobblestone texture
 			return Texture.texture("cobblestone");
 		}
-		if (id.equals("43.5") || id.equals("44.5") || id.equals("98") || id.equals("109") || id.contains("109.")   || id.equals("44.13")) {	//stonebrick texture
+		if (id.equals("43.5") || id.equals("44.5") || id.equals("98") || id.equals("109") || id.contains("109.") || id.equals("44.13") || id.contains("109")) {	//stonebrick texture
 			return Texture.texture("stone_bricks");
 		}
-		if (id.equals("126.8") || id.equals("126") || id.equals("85") || id.equals("5")) {
+		if (id.equals("126.8") || id.equals("126") || id.equals("85") || id.equals("5") || id.contains("53")) {
 			return Texture.texture("oak_planks");
 		}
-		if (id.equals("126.11") || id.equals("126.3") || id.equals("190")) {
+		if (id.equals("126.11") || id.equals("126.3") || id.equals("190") || id.contains("136")) {
 			return Texture.texture("jungle_planks");
 		}
-		if (id.equals("126.12") || id.equals("126.4") || id.equals("192") || id.equals("5.4")) {
+		if (id.equals("126.12") || id.equals("126.4") || id.equals("192") || id.equals("5.4") || id.contains("163")) {
 			return Texture.texture("acacia_planks");
 		}
 		if (id.equals("251.3")) {	//light blue concrete
@@ -546,6 +546,12 @@ public class BlockUtil {
 		}
 		if (id.equals("85") || id.equals("113") || id.equals("188") || id.equals("189") || id.equals("190") || id.equals("191") || id.equals("192")) {
 			return "fence";
+		}
+		if (id.equals("109") || id.equals("108") || id.equals("114") || id.equals("128") || id.equals("134") || id.equals("135") || id.equals("136") || id.equals("156") || id.equals("163") || id.equals("164") || id.equals("53") || id.equals("67")) {
+			return "stair0";
+		}
+		if (id.equals("109.1") || id.equals("108.1") || id.equals("114.1") || id.equals("128.1") || id.equals("134.1") || id.equals("135.1") || id.equals("136.1") || id.equals("156.1") || id.equals("163.1") || id.equals("164.1") || id.equals("53.1") || id.equals("67.1")) {
+			return "stair1";
 		}
 		
 		
