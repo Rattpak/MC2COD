@@ -1,5 +1,6 @@
 # MC2COD
 Minecraft Map to Call of Duty Map Converter
+If you use this please give credit
 
 ## Usage
 Run the .jar file by double-clicking or via command line.
