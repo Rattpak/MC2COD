@@ -178,6 +178,9 @@ public class BlockUtil {
 		if (id.equals("1.6")) {
 			return Texture.texture("polished_andesite");
 		}
+		if (id.equals("82")) {
+			return Texture.texture("clay");
+		}
 		if (id.equals("1.4")) {
 			return Texture.texture("polished_diorite");
 		}
@@ -262,7 +265,7 @@ public class BlockUtil {
 		if(id.equals("43")) {
 			return Texture.texture("smooth_stone");
 		}
-		if(id.equals("44")) {
+		if(id.equals("44") || id.equals("44.8")) {
 			return Texture.texture("smooth_stone");
 		}
 		if(id.equals("35")) {
@@ -439,6 +442,18 @@ public class BlockUtil {
 	
 	
 	public boolean getBlockPlaceable(String id) {
+		if (id.equals("218")) { //observer 
+			return false;
+		}
+		if (id.equals("218")) { //observer 
+			return false;
+		}
+		if (id.equals("118")) { //cauldron
+			return false;
+		}
+		if (id.equals("117")) { //brewing
+			return false;
+		}
 		if (id.equals("156")) { //quartz stair 
 			return false;
 		}
@@ -491,13 +506,25 @@ public class BlockUtil {
 		if (id.equals("107")) {	//oak fence gate
 			return false;
 		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("107")) {
+			return false;
+		}
 		if (id.equals("138")) {
 			return false;
 		}
 		if (id.equals("77") || id.equals("77.1") || id.equals("77.4") || id.equals("77.2") || id.equals("77.3") || id.equals("77.5")) {		//stone button
 			return false;
 		}
-		if (id.equals("143")) {	//wooden button
+		if (id.equals("143")) { //wood button
+			return false;
+		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("143")) {
+			return false;
+		}
+		if (id.equals("171")) { //carpets
+			return false;
+		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("171")) {
 			return false;
 		}
 		if (id.equals("63")) {		//standing sign block
@@ -533,7 +560,12 @@ public class BlockUtil {
 		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("65")) { //any decimal variations of 65 
 			return false;
 		}
-			
+		if (id.equals("120")) { //end portal frame
+			return false;
+		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("120")) { 
+			return false;
+		}
 		if (id.equals("78")) {
 			return false;
 		}
