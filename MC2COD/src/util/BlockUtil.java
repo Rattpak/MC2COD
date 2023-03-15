@@ -46,6 +46,15 @@ public class BlockUtil {
 		if (id.equals("17.1")) {	//spruce logs
 			return Texture.texture("spruce_log_top", "spruce_log_top", "spruce_log");
 		}
+		if (id.equals("24")) {	//sandstone
+			return Texture.texture("sandstone_bottom", "sandstone_top", "sandstone");
+		}
+		if (id.equals("24.2")) {	//cut sandstone
+			return Texture.texture("sandstone_top", "sandstone_top", "cut_sandstone");
+		}
+		if (id.equals("179")) {	//red sandstone
+			return Texture.texture("red_sandstone_bottom", "red_sandstone_top", "red_sandstone");
+		}
 		if (id.equals("79")) {
 			return Texture.texture("ice");
 		}
@@ -366,6 +375,9 @@ public class BlockUtil {
 		if (id.equals("159.6")) { 	
 			return Texture.texture("pink_terracotta");
 		}
+		if (id.equals("166")) { 	//barriers
+			return Texture.texture("clip");
+		}
 		if (id.equals("159.7")) { 	
 			return Texture.texture("gray_terracotta");
 		}
@@ -445,10 +457,17 @@ public class BlockUtil {
 		if (id.equals("194")) {	//Birch Door Block
 			return false;
 		}
-		if (id.equals("166")) {	//barriers
+		if (id.equals("71")) { //iron doors
 			return false;
 		}
-		if (id.equals("71")) {		//Iron Door Block
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("71")) {
+			return false;
+		}
+		
+		if (id.equals("198")) { //end rod
+			return false;
+		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("198")) {
 			return false;
 		}
 		if (id.equals("28") || id.equals("28.1")) {		//detector rail
@@ -478,7 +497,13 @@ public class BlockUtil {
 		if (id.equals("323") || id.equals("68.3")) {	//sign
 			return false;
 		}
-		if (id.equals("69")) {		//lever
+		if (id.equals("69")) { //levers
+			return false;
+		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("69")) {
+			return false;
+		}
+		if (id.equals("70")) { //stone pplate
 			return false;
 		}
 		if (id.equals("183")) { //spruce gate
@@ -513,7 +538,42 @@ public class BlockUtil {
 		if (id.equals("10") || id.equals("11")) { //lava & flowing lava
 			return false;
 		}
-
+		
+		if (id.equals("145")) { //anvils
+			return false;
+		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("145")) {
+			return false;
+		}
+		
+		if (id.equals("140")) { //flowerpots
+			return false;
+		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("140")) {
+			return false;
+		}
+		
+		if (id.equals("55")) { //redstone wire
+			return false;
+		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("55")) {
+			return false;
+		}
+		
+		if (id.equals("96")) { //wood trapdoor
+			return false;
+		}
+		if (id.contains(".") && id.substring(0, id.indexOf('.')).equals("96")) {
+			return false;
+		}
+		
+		if (id.equals("151")) { //daylight sensor 
+			return false;
+		}
+		if (id.equals("178")) { //daylight sensor inverted
+			return false;
+		}
+		
 		if (id.equals("6") || id.equals("6.1") || id.equals("6.2") || id.equals("6.3") || id.equals("6.4") || id.equals("6.5")) { //sapplings
 			return false;
 		}
