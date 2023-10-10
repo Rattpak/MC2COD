@@ -43,4 +43,5 @@ This program requires use of .bo2 minecraft format. The best tool to do this is 
 - Add verbose output option (slower)
 - Add NBT Schem support
 - Add 2nd CSG run on pass 1 CSG geometry
+- Add specific block exclusion
   
