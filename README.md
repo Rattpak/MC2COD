@@ -37,3 +37,8 @@ Generate Map
 This program requires use of .bo2 minecraft format. The best tool to do this is with [cubical.xyz](https://beta.cubical.xyz/). Use File > Export File > Legacy Formats > Terrain Control bo2.
 
 ## Known Issues
+
+## TODO
+- Add verbose output option (slower)
+- Add NBT Schem support
+  
