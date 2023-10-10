@@ -14,6 +14,7 @@ Use the Map Name input field to name the outputted .map file
 ### Settings
 Choose the game to convert the map for 
 - World at War
+- Black Ops 1 (use World at War option)
 - Black Ops 3
 
 Choose brush generation options
